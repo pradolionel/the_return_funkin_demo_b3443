@@ -75,7 +75,7 @@ class MainMenuState extends MusicBeatState
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
-		bg.setGraphicSize(Std.int(bg.width * 0.9));
+		bg.setGraphicSize(Std.int(bg.width * 1));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
@@ -83,7 +83,7 @@ class MainMenuState extends MusicBeatState
 		
 		bg1 = new FlxSprite(-80).loadGraphic(Paths.image('menuBGBlue'));
 		bg1.scrollFactor.set(0, yScroll);
-		bg1.setGraphicSize(Std.int(bg1.width * 0.9));
+		bg1.setGraphicSize(Std.int(bg1.width * 1));
 		bg1.updateHitbox();
 		bg1.screenCenter();
 		bg1.visible = false;
@@ -92,7 +92,7 @@ class MainMenuState extends MusicBeatState
 		
 		bg2 = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
 		bg2.scrollFactor.set(0, yScroll);
-		bg2.setGraphicSize(Std.int(bg2.width * 0.9));
+		bg2.setGraphicSize(Std.int(bg2.width * 1));
 		bg2.updateHitbox();
 		bg2.screenCenter();
 		bg2.visible = false;
@@ -101,7 +101,7 @@ class MainMenuState extends MusicBeatState
 		
 		bg3 = new FlxSprite(-80).loadGraphic(Paths.image('menuBGMagenta'));
 		bg3.scrollFactor.set(0, yScroll);
-		bg3.setGraphicSize(Std.int(bg3.width * 0.9));
+		bg3.setGraphicSize(Std.int(bg3.width * 1));
 		bg3.updateHitbox();
 		bg3.screenCenter();
 		bg3.visible = false;
