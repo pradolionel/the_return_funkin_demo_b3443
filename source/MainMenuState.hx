@@ -73,11 +73,38 @@ class MainMenuState extends MusicBeatState
 		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
-		bg.setGraphicSize(Std.int(bg.width * 1.175));
+		bg.setGraphicSize(Std.int(bg.width * 0.9));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+		
+		bg1 = new FlxSprite(-80).loadGraphic(Paths.image('menuBGBlue'));
+		bg1.scrollFactor.set(0, yScroll);
+		bg1.setGraphicSize(Std.int(bg1.width * 0.9));
+		bg1.updateHitbox();
+		bg1.screenCenter();
+		bg1.visible = false;
+		bg1.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bg1);
+		
+		bg2 = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+		bg2.scrollFactor.set(0, yScroll);
+		bg2.setGraphicSize(Std.int(bg2.width * 0.9));
+		bg2.updateHitbox();
+		bg2.screenCenter();
+		bg2.visible = false;
+		bg2.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bg2);
+		
+		bg3 = new FlxSprite(-80).loadGraphic(Paths.image('menuBGMagenta'));
+		bg3.scrollFactor.set(0, yScroll);
+		bg3.setGraphicSize(Std.int(bg3.width * 0.9));
+		bg3.updateHitbox();
+		bg3.screenCenter();
+		bg3.visible = false;
+		bg3.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bg3);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
@@ -105,7 +132,7 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(150, (i * 140)  + offset);
+			var menuItem:FlxSprite = new FlxSprite(50, (i * 140)  + offset);
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
@@ -122,15 +149,6 @@ class MainMenuState extends MusicBeatState
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 		}
-		
-		bg1 = new FlxSprite(-80).loadGraphic(Paths.image('menuBGBlue'));
-		bg1.scrollFactor.set(0, yScroll);
-		bg1.setGraphicSize(Std.int(bg1.width * 1.175));
-		bg1.updateHitbox();
-		bg1.screenCenter();
-		bg1.visible = false;
-		bg1.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bg1);
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -196,6 +214,30 @@ class MainMenuState extends MusicBeatState
 				else
 				{
 				bg1.visible = false;
+				}
+				
+				if (optionShit[curSelected] == 'options')
+				{
+				    changeItem(-1);
+				    changeItem(1);
+				
+				bg2.visible = true;
+				}
+				else
+				{
+				bg2.visible = false;
+				}
+				
+				if (optionShit[curSelected] == 'credits')
+				{
+				    changeItem(-1);
+				    changeItem(1);
+				
+				bg3.visible = true;
+				}
+				else
+				{
+				bg3.visible = false;
 				}
 				    
 				    
