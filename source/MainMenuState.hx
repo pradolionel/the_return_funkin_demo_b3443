@@ -43,6 +43,8 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var debugKeys:Array<FlxKey>;
 	private var bg1:FlxSprite;
+	private var bg2:FlxSprite;
+	private var bg3:FlxSprite;
 
 	override function create()
 	{
