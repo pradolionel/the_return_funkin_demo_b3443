@@ -1556,7 +1556,7 @@ class FunkinLua {
 			PauseSubState.restartSong(skipTransition);
 			return true;
 		});
-		Lua_helper.add_callback(lua, "exitSong", function(?skipTransition:Bool = false) {
+		Lua_helper.add_callback(lua, "exitSong", function(skipTransition:Bool) {
 			if(skipTransition)
 			{
 				FlxTransitionableState.skipNextTransIn = true;
@@ -1569,21 +1569,18 @@ class FunkinLua {
 				CustomFadeTransition.nextCamera = null;
 
 			if(PlayState.isStoryMode)
-				MusicBeatState.switchState(new StoryMenuState());
+				MusicBeatState.switchState(new MainMenuState());
 			else
 				MusicBeatState.switchState(new FreeplayState());
 
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
-			PlayState.changedDifficulty = false;
 			PlayState.chartingMode = false;
 			PlayState.instance.transitioning = true;
-			WeekData.loadTheFirstEnabledMod();
-			return true;
 		});
 		Lua_helper.add_callback(lua, "getSongPosition", function() {
 			return Conductor.songPosition;
 		});
-
+		
 		Lua_helper.add_callback(lua, "getCharacterX", function(type:String) {
 			switch(type.toLowerCase()) {
 				case 'dad' | 'opponent':
