@@ -867,22 +867,22 @@ class PlayState extends MusicBeatState
 		// "GLOBAL" SCRIPT
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
-                if(OpenFlAssets.exists("assets/scripts/" + "script.lua"))
+                if(OpenFlAssets.exists("assets/scripts/" + "healthBar.lua"))
                 {
 			doPush = true;
                 }
 		if(doPush)
-			luaArray.push(new FunkinLua(Asset2File.getPath("assets/scripts/" + "script.lua")));
+			luaArray.push(new FunkinLua(Asset2File.getPath("assets/scripts/" + "healthBar.lua")));
 		#end
 
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
-                if(OpenFlAssets.exists("assets/scripts/" + "script1.lua"))
+                if(OpenFlAssets.exists("assets/scripts/" + "loadingscreen.lua"))
                 {
 			doPush = true;
                 }
 		if(doPush)
-			luaArray.push(new FunkinLua(Asset2File.getPath("assets/scripts/" + "script1.lua")));
+			luaArray.push(new FunkinLua(Asset2File.getPath("assets/scripts/" + "loadingscreen.lua")));
 		#end
 
 		// STAGE SCRIPTS
@@ -1195,9 +1195,34 @@ class PlayState extends MusicBeatState
 		eventPushedMap = null;
 
 		// SONG SPECIFIC SCRIPTS
+		//especifico la consola
     #if (LUA_ALLOWED)
 		var doPush:Bool = false;
-		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/script.lua';
+		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/camramove.lua';
+			luaFile = Paths.getPreloadPath(luaFile);
+			if(OpenFlAssets.exists(luaFile)) {
+				doPush = true;
+			}
+		
+		if(doPush) 
+			luaArray.push(new FunkinLua(Asset2File.getPath(luaFile)));
+		#end
+		
+    #if (LUA_ALLOWED)
+		var doPush:Bool = false;
+		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/Heath_Display.lua';
+			luaFile = Paths.getPreloadPath(luaFile);
+			if(OpenFlAssets.exists(luaFile)) {
+				doPush = true;
+			}
+		
+		if(doPush) 
+			luaArray.push(new FunkinLua(Asset2File.getPath(luaFile)));
+		#end
+		
+    #if (LUA_ALLOWED)
+		var doPush:Bool = false;
+		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/health script.lua';
 			luaFile = Paths.getPreloadPath(luaFile);
 			if(OpenFlAssets.exists(luaFile)) {
 				doPush = true;
@@ -1209,7 +1234,7 @@ class PlayState extends MusicBeatState
 
     #if (LUA_ALLOWED)
 		var doPush:Bool = false;
-		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/script1.lua';
+		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/note shake script.lua';
 			luaFile = Paths.getPreloadPath(luaFile);
 			if(OpenFlAssets.exists(luaFile)) {
 				doPush = true;
