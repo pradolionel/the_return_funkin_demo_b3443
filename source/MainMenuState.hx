@@ -42,6 +42,7 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var debugKeys:Array<FlxKey>;
+	private var bg1:FlxSprite;
 
 	override function create()
 	{
@@ -104,7 +105,7 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(100, (i * 140)  + offset);
+			var menuItem:FlxSprite = new FlxSprite(150, (i * 140)  + offset);
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
@@ -121,6 +122,15 @@ class MainMenuState extends MusicBeatState
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 		}
+		
+		bg1 = new FlxSprite(-80).loadGraphic(Paths.image('menuBGBlue'));
+		bg1.scrollFactor.set(0, yScroll);
+		bg1.setGraphicSize(Std.int(bg1.width * 1.175));
+		bg1.updateHitbox();
+		bg1.screenCenter();
+		bg1.visible = false;
+		bg1.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bg1);
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -176,6 +186,19 @@ class MainMenuState extends MusicBeatState
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 
+				if (optionShit[curSelected] == 'freeplay')
+				{
+				    changeItem(-1);
+				    changeItem(1);
+				
+				bg1.visible = true;
+				}
+				else
+				{
+				bg1.visible = false;
+				}
+				    
+				    
 		if (!selectedSomethin)
 		{
 			if (controls.UI_UP_P)
@@ -231,7 +254,22 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'story_mode':
-										MusicBeatState.switchState(new StoryMenuState());
+										WeekData.reloadWeekFiles(true);
+
+										var weekSong:Array<String> = [];
+
+										for (songData in WeekData.weeksLoaded["week1"].songs) {
+											weekSong.push(songData[0]);
+										}
+
+										PlayState.storyPlaylist = weekSong;
+										PlayState.isStoryMode = true;
+							
+										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase(), PlayState.storyPlaylist[0].toLowerCase());
+										PlayState.campaignScore = 0;
+										PlayState.campaignMisses = 0;
+										
+										LoadingState.loadAndSwitchState(new PlayState(), true);
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									#if MODS_ALLOWED
