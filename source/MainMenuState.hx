@@ -294,22 +294,31 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'story_mode':
-										WeekData.reloadWeekFiles(true);
+									PlayState.isStoryMode = true;
+									WeekData.reloadWeekFiles(true);
 
-										var weekSong:Array<String> = [];
+													var songArray:Array<String> = [];
+			var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
+			for (i in 0...leWeek.length) {
+				songArray.push(leWeek[i][0]);
+			}
 
-										for (songData in WeekData.weeksLoaded["week1"].songs) {
-											weekSong.push(songData[0]);
-										}
+			// Nevermind that's stupid lmao
+			PlayState.storyPlaylist = songArray;
+			PlayState.isStoryMode = true;
+			selectedWeek = true;
 
-										PlayState.storyPlaylist = weekSong;
-										PlayState.isStoryMode = true;
-							
-										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase(), PlayState.storyPlaylist[0].toLowerCase());
-										PlayState.campaignScore = 0;
-										PlayState.campaignMisses = 0;
-										
-										LoadingState.loadAndSwitchState(new PlayState(), true);
+			var diffic = CoolUtil.getDifficultyFilePath(curDifficulty);
+			if(diffic == null) diffic = '';
+
+			PlayState.storyDifficulty = curDifficulty;
+
+			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
+			PlayState.campaignScore = 0;
+			PlayState.campaignMisses = 0;
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				LoadingState.loadAndSwitchState(new PlayState(), true);
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									#if MODS_ALLOWED
