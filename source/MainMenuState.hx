@@ -45,9 +45,6 @@ class MainMenuState extends MusicBeatState
 	private var bg1:FlxSprite;
 	private var bg2:FlxSprite;
 	private var bg3:FlxSprite;
-	var curDifficulty:Int = 1;
-	var loadedWeeks:Array<WeekData> = [];
-	var selectedWeek:Bool = false;
 
 	override function create()
 	{
@@ -297,32 +294,27 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'story_mode':
-									PlayState.isStoryMode = true;
+									PlayState.isStoryMode = true;								
 									WeekData.reloadWeekFiles(true);
 
-													var songArray:Array<String> = [];
-			var leWeek:Array<Dynamic> = loadedWeeks["week1"].songs;
-			for (i in 0...leWeek.length) {
-				songArray.push(leWeek[i][0]);
-			}
+										var weekSong:Array<String> = [];
 
-			// Nevermind that's stupid lmao
-			PlayState.storyPlaylist = songArray;
-			PlayState.isStoryMode = true;
-			selectedWeek = true;
+										for (songData in WeekData.weeksLoaded["week1"].songs) {
+											weekSong.push(songData[0]);
+										}
 
-			var diffic = CoolUtil.getDifficultyFilePath(curDifficulty);
-			if(diffic == null) diffic = '';
-
-			PlayState.storyDifficulty = curDifficulty;
+										PlayState.storyPlaylist = weekSong;
+										PlayState.isStoryMode = true;
+							
+PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
-			PlayState.campaignScore = 0;
-			PlayState.campaignMisses = 0;
 			
+			PlayState.campaignScore = 0;
+			
+			PlayState.campaignMisses = 0;										
 				LoadingState.loadAndSwitchState(new PlayState(), true);
-				
-				FreeplayState.destroyFreeplayVocals();
+				FreeplayState.destroyFreeplayVocals();									
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplayState());
 									#if MODS_ALLOWED
