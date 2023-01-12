@@ -45,6 +45,9 @@ class MainMenuState extends MusicBeatState
 	private var bg1:FlxSprite;
 	private var bg2:FlxSprite;
 	private var bg3:FlxSprite;
+	var curDifficulty:Int = 1;
+	var loadedWeeks:Array<WeekData> = [];
+	var selectedWeek:Bool = false;
 
 	override function create()
 	{
