@@ -1,22 +1,59 @@
 {
-	"songs": [
-		["Spookeez", "spooky", [34, 51, 68]],
-		["South", "spooky", [34, 51, 68]],
-		["Monster", "monster", [34, 51, 68]]
+	"storyName": "return of whitty",
+	"difficulties": "hard",
+	"hideFreeplay": false,
+	"weekBackground": "",
+	"freeplayColor": [
+		146,
+		113,
+		253
 	],
-
-	"weekCharacters": [
-		"spooky",
-		"bf",
-		"gf"
-	],
-	"weekBackground": "halloween",
-
-	"storyName": "Spooky Month",
-	"weekBefore": "week1",
-	"weekName": "Week 2",
+	"weekBefore": "tutorial",
 	"startUnlocked": true,
-
-	"hideStoryMode": false,
-	"hideFreeplay": false
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"gallant",
+			"whitty",
+			[
+				100,
+				100,
+				100
+			]
+		],
+		[
+			"low-revs",
+			"whitty",
+			[
+				100,
+				100,
+				100
+			]
+		],
+		[
+			"bomblitz",
+			"whittya",
+			[
+				100,
+				100,
+				100
+			]
+		],
+		[
+			"untold-loneliness",
+			"whittyu",
+			[
+				0,
+				0,
+				0
+			]
+		]
+	],
+	"hideStoryMode": true,
+	"weekName": "Custom Week",
+	"hiddenUntilUnlocked": false
 }

@@ -1,22 +1,50 @@
 {
-	"songs": [
-		["Bopeebo", "dad", [146, 113, 253]],
-		["Fresh", "dad", [146, 113, 253]],
-		["Dad Battle", "dad", [146, 113, 253]]
-	],
-
-	"weekCharacters": [
-		"dad",
-		"bf",
-		"gf"
-	],
-	"weekBackground": "stage",
-
-	"storyName": "Daddy Dearest",
+	"storyName": "return of whitty",
+	"difficulties": "normal",
+	"hideFreeplay": false,
+	"weekBackground": "",
 	"weekBefore": "tutorial",
-	"weekName": "Week 1",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
 	"startUnlocked": true,
-
 	"hideStoryMode": false,
-	"hideFreeplay": false
+	"songs": [
+		[
+			"rellfight",
+			"whitty",
+			[
+				100,
+				100,
+				100
+			]
+		],
+		[
+			"cluste",
+			"whitty",
+			[
+				100,
+				100,
+				100
+			]
+		],
+		[
+			"oxide",
+			"whittya",
+			[
+				100,
+				100,
+				100
+			]
+		]
+	],
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week"
 }
