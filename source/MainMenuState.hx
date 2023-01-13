@@ -298,14 +298,14 @@ class MainMenuState extends MusicBeatState
 
 										var weekSong:Array<String> = [];
 
-										for (songData in WeekData.weeksLoaded["week1"].songs) {
+										for (songData in WeekData.weeksLoaded["week1"]normal.songs) {
 											weekSong.push(songData[0]);
 										}
 
 										PlayState.storyPlaylist = weekSong;
 										PlayState.isStoryMode = true;
 							
-										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase()normal, PlayState.storyPlaylist[0].toLowerCase());
+										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase(), PlayState.storyPlaylist[0].toLowerCase());
 										PlayState.campaignScore = 0;
 										PlayState.campaignMisses = 0;
 										
