@@ -305,7 +305,7 @@ class MainMenuState extends MusicBeatState
 										PlayState.storyPlaylist = weekSong;
 										PlayState.isStoryMode = true;
 							
-										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + normal, PlayState.storyPlaylist[0].toLowerCase());
+										PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase()normal, PlayState.storyPlaylist[0].toLowerCase());
 										PlayState.campaignScore = 0;
 										PlayState.campaignMisses = 0;
 										
