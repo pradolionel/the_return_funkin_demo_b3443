@@ -298,7 +298,7 @@ class MainMenuState extends MusicBeatState
 
 										var weekSong:Array<String> = [];
 
-										for (songData in WeekData.weeksLoaded["week1"]normal.songs) {
+										for (songData in WeekData.weeksLoaded["week1"].songs) {
 											weekSong.push(songData[0]);
 										}
 
